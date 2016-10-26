@@ -1,0 +1,87 @@
+.catalog:
+    name: "OpenEdx"
+    version: "v0.1"
+    description: "OpenEdx Platform"
+    uuid: OpenEdx-0
+    minimum_rancher_version: v1.1.4
+    questions:
+        - variable: EDX_RABBIT_DATA_ROOT
+          description: "OpenEdx Rabbit Data Storage Location"
+          label: "OpenEdx Rabbit Data Location"
+          required: true
+          default: "EDX_RABBIT_DATA_ROOT"
+          type: "string"
+        - variable: EDX_MEMCACHE_DATA_ROOT
+          description: "OpenEdx Memcache Data Storage Location"
+          label: "OpenEdx Memcache Data Location"
+          required: true
+          default: "EDX_MEMCACHE_DATA_ROOT"
+          type: "string"
+        - variable: EDX_ES_DATA_ROOT
+          description: "OpenEdx ES Data Storage Location"
+          label: "OpenEdx ES Data Location"
+          required: true
+          default: "EDX_ES_DATA_ROOT"
+          type: "string"
+        - variable: EDX_MONGO_DATA_ROOT
+          description: "OpenEdx Mongo Data Storage Location"
+          label: "OpenEdx Mongo Data Location"
+          required: true
+          default: "EDX_MONGO_DATA_ROOT"
+          type: "string"
+        - variable: EDX_MYSQL_DATA_ROOT
+          description: "OpenEdx MySQL Data Storage Location"
+          label: "OpenEdx MySQL Data Location"
+          required: true
+          default: "EDX_MYSQL_DATA_ROOT"
+          type: "string"
+        - variable: EDXAPP_PLATFORM_ROOT
+          description: "OpenEdx APP Platform Storage Location"
+          label: "OpenEdx APP Platform Location"
+          required: true
+          default: "EDXAPP_PLATFORM_ROOT"
+          type: "string"
+        - variable: EDXAPP_CS_COMMENTS_ROOT
+          description: "OpenEdx APP CS Comments Storage Location"
+          label: "OpenEdx APP CS Comments Location"
+          required: true
+          default: "EDXAPP_CS_COMMENTS_ROOT"
+          type: "string"
+        - variable: EDXAPP_STATICFILES_ROOT
+          description: "Static Files storage location"
+          label: "OpenEdx Static Files Storage Location"
+          required: true
+          default: "EDXAPP_STATICFILES_ROOT"
+          type: "string"
+        - variable: EDXAPP_PLATFORM_NAME
+          description: "Openedx Platform Name"
+          label: "Openedx Platform Name"
+          required: true
+          default: "Opensaas Learning Platform"
+          type: "string"        
+        - variable: STUDIO_DOMAIN_NAME
+          description: "Studio/CMS domain name"
+          label: "Studio/CMS domain name"
+          required: true
+          default: "studio.edx.opensaas.local"
+          type: "string"        
+        - variable: EDX_DOMAIN_NAME
+          description: "Edx/LMS domain name"
+          label: "Edx/LMS domain name"
+          required: true
+          default: "edx.opensaas.local"
+          type: "string"
+        - variable: volume_driver
+          description: "Volume Driver for the persistant data locations requires docker 1.7"
+          label: "Volume Driver"
+          default: "convoy-nfs"
+          type: "string"
+    lb:
+        load_balancer_config:
+            haproxy_config: {}
+        health_check:
+            port: 42
+            interval: 2000
+            unhealthy_threshold: 3
+            healthy_threshold: 2
+            response_timeout: 2000
